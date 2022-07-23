@@ -1,0 +1,22 @@
+{
+  "name": "interview-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajreuri23/interview-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajreuri23/interview-tracker/issues"
+  },
+  "homepage": "https://github.com/ajreuri23/interview-tracker#readme",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}
