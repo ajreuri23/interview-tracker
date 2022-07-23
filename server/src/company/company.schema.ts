@@ -8,6 +8,7 @@ import { Status, StatusSchema } from './interfaces/status';
 import { Location, LocationSchema } from './interfaces/location';
 import { ApiProperty } from '@nestjs/swagger';
 import { WorkModel, WorkModelSchema } from './interfaces/work-model';
+import Joi from 'joi';
 
 @Schema()
 export class Company extends Document {
@@ -58,6 +59,6 @@ export class Company extends Document {
     @ApiProperty({ required: false })
     @Prop({ type: WorkModelSchema, required: false })
     workModel?: WorkModel;
-}
+};
 
 export const CompanySchema = SchemaFactory.createForClass(Company);

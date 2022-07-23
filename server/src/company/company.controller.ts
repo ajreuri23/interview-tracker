@@ -1,7 +1,9 @@
-import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Res, UsePipes } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { JoiValidationPipe } from 'src/common/pipes/joi-validation.pipe';
 import { CompanyService } from './company,service';
 import { Company } from './company.schema';
+import { ObjectSchema } from 'joi';
 
 @ApiTags('company')
 @Controller('company')
@@ -20,7 +22,7 @@ export class ComapnyController {
     }
 
     @ApiResponse({ type: Company })
-    @Post() 
+    @Post()
     public async createCompany(@Res() res, @Body() companyDto: Company): Promise<Company> {
         try {
             const company: Company = await this.companyService.create(companyDto);
