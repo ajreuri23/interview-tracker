@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CompanyService } from './company,service';
 import { ComapnyController } from './company.controller';
 import { Company, CompanySchema } from './company.schema';
+import { FilterMakerService } from '../common/services/filter-maker.service';
 
 @Module({
   imports: [
@@ -11,6 +12,6 @@ import { Company, CompanySchema } from './company.schema';
     ]),
   ],
   controllers: [ComapnyController],
-  providers: [CompanyService],
+  providers: [CompanyService, FilterMakerService],
 })
 export class ComapnyModule { }

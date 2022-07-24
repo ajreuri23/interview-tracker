@@ -8,7 +8,9 @@ export class CompanyService {
     constructor(@InjectModel(Company.name) private companyModel: Model<CompanyDocument>) {}
 
     async getAllCompanies(): Promise<Company[]> {
-        return await this.companyModel.find().exec();
+        const companies: Company[] = await this.companyModel.find().lean().exec();
+
+        return companies;
     }
 
     async create(companyDto: Company): Promise<Company> {
