@@ -11,6 +11,7 @@ enum StatusType {
 enum StatusStage {
     Apply = 'Apply',
     HR = 'HR',
+    Homework = 'Homework',
     firstInterview = '1st Technical Interview',
     secondInterview = '2nd Technical Interview',
     Meetup = 'HR Meetup',
@@ -26,7 +27,7 @@ enum StatusTiming {
 export class Status {
     @ApiProperty()
     @Prop({ type: String, enum: StatusType })
-    status: StatusType;
+    type: StatusType;
 
     @ApiProperty()
     @Prop({ type: String, enum: StatusStage })

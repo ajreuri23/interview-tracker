@@ -23,6 +23,10 @@ export class Location {
     @ApiProperty()
     @Prop()
     latitude: number;
+
+    @ApiProperty()
+    @Prop()
+    address: string;
 }
 
 export const LocationSchema = SchemaFactory.createForClass(Location);

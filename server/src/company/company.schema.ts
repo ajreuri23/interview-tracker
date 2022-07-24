@@ -8,25 +8,26 @@ import { Status, StatusSchema } from './interfaces/status';
 import { Location, LocationSchema } from './interfaces/location';
 import { ApiProperty } from '@nestjs/swagger';
 import { WorkModel, WorkModelSchema } from './interfaces/work-model';
-import Joi from 'joi';
+
+export type CompanyDocument = Company & Document;
 
 @Schema()
-export class Company extends Document {
-    @ApiProperty()
+export class Company {
+    @ApiProperty({ required: true, type: String})
     @Prop({ required: true, unique: true })
     name: string;
 
-    @ApiProperty()
+    @ApiProperty({ type: String, enum: JobType, required: true})
     @Prop({ type: String, enum: JobType, required: true })
     jobType: JobType;
 
-    @ApiProperty()
+    @ApiProperty({ type: String, enum: CompanyType, required: true })
     @Prop({ type: String, enum: CompanyType, required: true })
     companyType: CompanyType;
 
     @ApiProperty({ required: false })
     @Prop({ required: false, isInteger: true })
-    workerAmount?: Number;
+    workerAmount?: number;
 
     @ApiProperty({ required: false })
     @Prop({ type: LocationSchema, required: false })
@@ -34,7 +35,7 @@ export class Company extends Document {
 
     @ApiProperty({ required: false })
     @Prop({ required: false, isInteger: true })
-    timeToGetInMinutes?: Number;
+    timeToGetInMinutes?: number;
 
     @ApiProperty({ required: false })
     @Prop({ required: false })

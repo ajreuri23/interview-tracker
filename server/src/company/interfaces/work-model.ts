@@ -15,7 +15,7 @@ export class WorkModel {
 
     @ApiProperty()
     @Prop({ required: false, isInteger: true })
-    amountOfDaysOnSite: Number;
+    amountOfDaysOnSite: number;
 }
 
 export const WorkModelSchema = SchemaFactory.createForClass(WorkModel);
