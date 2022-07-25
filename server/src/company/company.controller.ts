@@ -38,18 +38,15 @@ export class ComapnyController {
     return {
       jobType: new CloseListFilter([...new Set(companies.map(company => company.jobType).filter(_ => _))]),
       companyType: new CloseListFilter([...new Set(companies.map(company => company.companyType).filter(_ => _))]),
-      workModel: {
-        type: new CloseListFilter([...new Set(companies.map(company => company.workModel.type).filter(_ => _))]),
-      },
-      location: {
-        city: new CloseListFilter([...new Set(companies.map(company => company.location.city).filter(_ => _))])
-      },
-      status: {
-        type: new CloseListFilter([...new Set(companies.map(company => company.status.type).filter(_ => _))]),
-        stage: new CloseListFilter([...new Set(companies.map(company => company.status.stage).filter(_ => _))]),
-      },
+      "workModel.type": new CloseListFilter([...new Set(companies.filter(company => company.workModel?.type).map(company => company.workModel.type).filter(_ => _))]),
+      "location.city": new CloseListFilter([...new Set(companies.filter(company => company.location?.city).map(company => company.location.city).filter(_ => _))]),
+      "status.type": new CloseListFilter([...new Set(companies.filter(company => company.status?.type).map(company => company.status.type).filter(_ => _))]),
+      "status.stage": new CloseListFilter([...new Set(companies.filter(company => company.status?.stage).map(company => company.status.stage).filter(_ => _))]),
       technologies: new CloseListFilter([...new Set(companies.map(company => company.technologies).flat().filter(_ => _))]),
       timeToGetInMinutes: new RangeFilter(Math.min(...companies.map(company => company.timeToGetInMinutes)), Math.max(...companies.map(company => company.timeToGetInMinutes)))
     }
   }
 }
+
+// Take object
+// Go through all the keys he has

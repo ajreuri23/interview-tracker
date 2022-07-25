@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Company } from 'src/app';
-import axios from 'axios';
+import { Company, CompanyResponse } from 'src/app';
 import { HttpHandlerService } from '../http-handler/http-handler.service';
 
 @Injectable({
@@ -12,13 +11,13 @@ export class CompanyManagerService {
 
   constructor(private httpHandler: HttpHandlerService) { }
 
-  public async getAllCompanies(): Promise<Company[]> {
+  public async getAllCompanies(): Promise<CompanyResponse> {
     try {
-      const companies: Company[] = await this.httpHandler.getRequest<Company[]>(`${this.SERVER_URL}${this.COMPANY_PATH}`);
+      const companies: CompanyResponse = await this.httpHandler.getRequest<CompanyResponse>(`${this.SERVER_URL}${this.COMPANY_PATH}`);
       return companies;
     } catch (err) {
       console.error('Cant fetch companies');
-      return [];
+      throw err;
     }
   }
 }

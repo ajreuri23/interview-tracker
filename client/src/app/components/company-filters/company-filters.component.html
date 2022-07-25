@@ -1,1 +1,3 @@
-<p>company-filters works!</p>
+<div *ngFor="let filter of filters">
+  <app-close-list-filter *ngIf="filter[1].type === 1" [filter]="filter" (newFilter)="onFilter($event)" (onDeleteFilter)="onDeleteFilter($event)"></app-close-list-filter>
+</div>

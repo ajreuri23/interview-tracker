@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Company } from 'src/app';
-import { CompanyManagerService } from 'src/app/services/company-manager/company-manager.service';
 
 @Component({
   selector: 'app-company-list',
@@ -8,16 +7,11 @@ import { CompanyManagerService } from 'src/app/services/company-manager/company-
   styleUrls: ['./company-list.component.scss'],
 })
 export class CompanyListComponent implements OnInit {
-  public companies: Company[] = [];
+  @Input() companies: Company[];
 
-  constructor(private companyManager: CompanyManagerService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.fetchCompanies();
-  }
-
-  private async fetchCompanies() {
-    this.companies = await this.companyManager.getAllCompanies();
   }
 }

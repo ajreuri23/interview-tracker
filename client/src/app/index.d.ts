@@ -90,3 +90,40 @@ export interface Company {
     funding?: Funding;
     workModel?: WorkModel;
 }
+
+export interface CompanyResponse {
+    data: Company[];
+    filters: Filter[];
+}
+
+export enum FilterType {
+    Range,
+    CloseList,
+    Term
+  }
+
+export interface Filter {
+    type: FilterType;
+}
+
+export interface CloseListFilter extends Filter {
+    options: string[];
+}
+
+export interface RangeFilter extends Filter {
+    min: number;
+    max: number;
+}
+
+export interface TermFilter extends Filter {
+    searchTerm: string;
+}
+
+export interface OnFilterEvent {
+  key: string;
+  filterFunction: (obj: any) => boolean
+}
+
+export interface OnDeleteFilterEvent {
+  key: string;
+}

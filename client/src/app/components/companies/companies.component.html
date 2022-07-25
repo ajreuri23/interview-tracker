@@ -1,0 +1,4 @@
+<div class="companies" *ngIf="companies && filters">
+    <app-company-filters [filters]="filters" (onNewFilter)="onNewFilter($event)"></app-company-filters>
+    <app-company-list [companies]="filteredCompanies"></app-company-list>
+</div>
