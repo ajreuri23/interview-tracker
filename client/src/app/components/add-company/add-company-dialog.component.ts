@@ -22,7 +22,7 @@ export class AddCompanyDialog implements OnInit {
 
   public jobType: JobType;
   public companyType: CompanyType;
-  public city: City;
+  public city: City | undefined;
   public statusType: StatusType | undefined;
   public workModel: WorkModelType | undefined;
   public statusTiming: StatusTiming | undefined;
@@ -39,6 +39,7 @@ export class AddCompanyDialog implements OnInit {
     this.statusTiming = this.company.status?.timing;
     this.statusType = this.company.status?.type;
     this.workModel = this.company.workModel?.type;
+    this.city = this.company.location?.city;
   }
 
   async addCompany() {
