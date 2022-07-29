@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Company, Filter, OnFilterEvent} from 'src/app/interfaces';
+import {Company, CompanyResponse, Filter, OnFilterEvent} from 'src/app/interfaces';
 import { CompanyManagerService } from 'src/app/services/company-manager/company-manager.service';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AddCompanyDialog} from "../add-company/add-company-dialog.component";
@@ -18,12 +18,15 @@ export class CompaniesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchCompanies();
+    this.companyManager.$companies.subscribe((companyResponse: CompanyResponse) => {
+      this.handleCompanyResponse(companyResponse);
+    });
+
+    this.companyManager.getAllCompanies();
   }
 
-  private async fetchCompanies() {
+  private async handleCompanyResponse(companiesResponse: CompanyResponse) {
     try {
-      const companiesResponse: { data: Company[], filters: Filter[]} = await this.companyManager.getAllCompanies();
       this.companies = companiesResponse.data;
       this.filteredCompanies = this.companies;
       this.filters = Object.entries(companiesResponse.filters);
@@ -49,8 +52,10 @@ export class CompaniesComponent implements OnInit {
   }
 
   openAddCompanyDialog() {
-    this.addCompanyDialog.open(AddCompanyDialog, {
+    const dialogRef: MatDialogRef<AddCompanyDialog> = this.addCompanyDialog.open(AddCompanyDialog, {
       width: '600px'
     });
+
+    dialogRef.afterClosed().subscribe((company) => this.companyManager.getAllCompanies());
   }
 }
