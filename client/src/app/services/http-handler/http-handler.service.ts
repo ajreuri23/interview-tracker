@@ -18,7 +18,7 @@ export class HttpHandlerService {
 
   public async postRequest<T>(url: string, body: T): Promise<T> {
     try {
-      const response: AxiosResponse<T> = await axios.post<T>(url);
+      const response: AxiosResponse<T> = await axios.post<T>(url, body);
       return response?.data;
     } catch (err) {
       throw new Error(`Fetching ${url} failed `);

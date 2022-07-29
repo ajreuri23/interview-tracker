@@ -1,14 +1,14 @@
 <mat-dialog-content>
   <input type="text" placeholder="Name" [ngModel]="company?.name">
-  <mat-select placeholder="Job Type" [ngModel]="company?.jobType">
-    <mat-option *ngFor="let jobType of jobTypes" [value]="jobType[0]">{{jobType[1]}}</mat-option>
+  <mat-select placeholder="Job Type" [(ngModel)]="jobType">
+    <mat-option *ngFor="let jobType of jobTypes" [value]="jobType[1]">{{jobType[1]}}</mat-option>
   </mat-select>
-  <mat-select placeholder="Company Type" [ngModel]="company?.companyType">
+  <mat-select placeholder="Company Type" [(ngModel)]="companyType">
     <mat-option *ngFor="let companyType of companyTypes" [value]="companyType[0]">{{companyType[1]}}</mat-option>
   </mat-select>
   <input type="number" placeholder="Worker Amount" [ngModel]="company?.workerAmount">
-  <mat-select placeholder="City" [ngModel]="company?.location?.city">
-    <mat-option *ngFor="let city of cities" [value]="city[0]">{{city[1]}}</mat-option>
+  <mat-select placeholder="City" [(ngModel)]="city">
+    <mat-option *ngFor="let city of cities" [value]="city[1]">{{city[1]}}</mat-option>
   </mat-select>
   <input type="number" placeholder="Longitude" [ngModel]="company?.location?.longitude">
   <input type="number" placeholder="Latitude" [ngModel]="company?.location?.latitude">
@@ -16,20 +16,20 @@
   <input type="number" placeholder="Time in minutes to get" [ngModel]="company?.timeToGetInMinutes">
   <input type="text" placeholder="Technologies" [ngModel]="company?.technologies">
 
-  <mat-select placeholder="Status type" [ngModel]="company?.status?.type">
-    <mat-option *ngFor="let statusType of statusTypes" [value]="statusType[0]">{{statusType[1]}}</mat-option>
+  <mat-select placeholder="Status type" [(ngModel)]="statusType">
+    <mat-option *ngFor="let statusType of statusTypes" [value]="statusType[1]">{{statusType[1]}}</mat-option>
   </mat-select>
-  <mat-select placeholder="Status stage" [ngModel]="company?.status?.stage">
-    <mat-option *ngFor="let statusStage of statusStages" [value]="statusStage[0]">{{statusStage[1]}}</mat-option>
+  <mat-select placeholder="Status stage" [(ngModel)]="statusStage">
+    <mat-option *ngFor="let statusStage of statusStages" [value]="statusStage[1]">{{statusStage[1]}}</mat-option>
   </mat-select>
-  <mat-select placeholder="Status timing" [ngModel]="company?.status?.timing">
-    <mat-option *ngFor="let statusTiming of statusTimings" [value]="statusTiming[0]">{{statusTiming[1]}}</mat-option>
+  <mat-select placeholder="Status timing" [(ngModel)]="statusTiming">
+    <mat-option *ngFor="let statusTiming of statusTimings" [value]="statusTiming[1]">{{statusTiming[1]}}</mat-option>
   </mat-select>
 
   <input type="text" placeholder="Description" [ngModel]="company?.description">
 
-  <mat-select placeholder="Work model" [ngModel]="company?.workModel">
-    <mat-option *ngFor="let workModel of workModels" [value]="workModel[0]">{{workModel[1]}}</mat-option>
+  <mat-select placeholder="Work model" [(ngModel)]="workModel">
+    <mat-option *ngFor="let workModel of workModels" [value]="workModel[1]">{{workModel[1]}}</mat-option>
   </mat-select>
 </mat-dialog-content>
 

@@ -23,7 +23,8 @@ export enum StatusStage {
   firstInterview = '1st Technical Interview',
   secondInterview = '2nd Technical Interview',
   Meetup = 'HR Meetup',
-  Contract = 'Contract'
+  Contract = 'Contract',
+  Homework = 'Homework'
 }
 
 export enum StatusTiming {

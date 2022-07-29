@@ -1,33 +1,33 @@
 import {City, CompanyType, FilterType, JobType, StatusStage, StatusTiming, StatusType, WorkModelType} from "./enums";
 
 export interface WorkModel {
-    type: WorkModelType;
-    amountOfDaysOnSite: number;
+    type?: WorkModelType;
+    amountOfDaysOnSite?: number;
 }
 
 export interface Status {
-    type: StatusType;
-    stage: StatusStage;
-    timing: StatusTiming;
-    date: Date;
+    type?: StatusType;
+    stage?: StatusStage;
+    timing?: StatusTiming;
+    date?: Date;
 }
 
 export interface Location {
-    city: City;
-    longitude: number;
-    latitude: number;
-    address: string;
+    city?: City;
+    longitude?: number;
+    latitude?: number;
+    address?: string;
 }
 
 export interface Funding {
-    fundingWave: number;
-    amountFundedInUsd: number;
+    fundingWave?: number;
+    amountFundedInUsd?: number;
 }
 
 export interface Contract {
-    moneyBruto: number;
-    vacationDays: number;
-    moneyNeto: number;
+    moneyBruto?: number;
+    vacationDays?: number;
+    moneyNeto?: number;
 }
 
 export interface Company {
