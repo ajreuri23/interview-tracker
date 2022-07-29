@@ -1,1 +1,40 @@
-<p *ngIf="company">{{company.name}}</p>
+<div class="company" *ngIf="company" [ngStyle]="{'border-color': company.status?.type === 'In Progress' ? 'yellow' : company.status?.type === 'Rejected' ? 'red' : company.status?.type ==='Didnt Want' ? 'orange' : 'white'}">
+  <div class="left">
+    <div class="up">
+      <div class="title">
+        <p id="name" *ngIf="company.name">{{company.name}}</p>
+      </div>
+      <div class="subtitle">
+        <p *ngIf="company.location?.address">{{company.location?.address}}, </p>
+        <p *ngIf="company.location?.city">{{company.location?.city}}</p>
+      </div>
+      <div class="subtitle">
+        <p *ngIf="company.jobType">{{company.jobType}},</p>
+        <p *ngIf="company.workModel?.type">{{company.workModel?.type}},</p>
+        <p *ngIf="company.companyType">{{company.companyType}},</p>
+        <p *ngIf="company.workerAmount">{{company.workerAmount}} workers</p>
+      </div>
+      <div class="description">
+        <p>{{company.description}}</p>
+      </div>
+    </div>
+    <div class="down">
+      <div>
+        <p>{{company.technologies}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="right">
+    <div class="up">
+      <p *ngIf="company.timeToGetInMinutes">Time to get: {{company.timeToGetInMinutes}} minutes</p>
+      <button mat-icon-button>
+        <mat-icon (click)="editCompany()">edit</mat-icon>
+      </button>
+    </div>
+    <div class="down" *ngIf="company.status">
+      <p>{{company.status.timing}} {{company.status.stage}}</p>
+      <p>{{company.status.date}}</p>
+    </div>
+  </div>
+</div>
+

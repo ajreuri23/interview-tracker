@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CloseListFilter, Company, Filter, OnFilterEvent} from 'src/app';
+import {CloseListFilter, Company, Filter, OnFilterEvent} from 'src/app/interfaces';
 import {MatCheckboxChange} from "@angular/material/checkbox";
 import { at } from 'lodash';
 

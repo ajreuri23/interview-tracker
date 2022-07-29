@@ -7,6 +7,14 @@ import { CompanyFiltersComponent } from './components/company-filters/company-fi
 import { CompaniesComponent } from './components/companies/companies.component';
 import { CloseListFilterComponent } from './components/company-filters/close-list-filter/close-list-filter.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatButtonModule} from "@angular/material/button";
+import {AddCompanyDialog} from "./components/add-company/add-company-dialog.component";
+import {FormsModule} from "@angular/forms";
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
+import {MatDialogModule} from "@angular/material/dialog";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -15,11 +23,19 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CompanyListComponent,
     CompanyFiltersComponent,
     CompaniesComponent,
-    CloseListFilterComponent
+    CloseListFilterComponent,
+    AddCompanyDialog
   ],
   imports: [
     BrowserModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatButtonModule,
+    FormsModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
-import {Filter, OnDeleteFilterEvent, OnFilterEvent} from "../../index";
+import {Filter, OnDeleteFilterEvent, OnFilterEvent} from "../../interfaces";
 
 @Component({
   selector: 'app-company-filters',

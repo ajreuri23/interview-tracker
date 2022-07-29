@@ -1,4 +1,5 @@
 <div class="companies" *ngIf="companies && filters">
+    <button mat-button mat-raised-button class="mat-primary" (click)="openAddCompanyDialog()">Add Company</button>
     <app-company-filters [filters]="filters" (onNewFilter)="onNewFilter($event)"></app-company-filters>
     <app-company-list [companies]="filteredCompanies"></app-company-list>
 </div>

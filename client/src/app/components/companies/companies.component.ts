@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Company, Filter, OnFilterEvent} from 'src/app';
+import {Company, Filter, OnFilterEvent} from 'src/app/interfaces';
 import { CompanyManagerService } from 'src/app/services/company-manager/company-manager.service';
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {AddCompanyDialog} from "../add-company/add-company-dialog.component";
 
 @Component({
   selector: 'app-companies',
@@ -12,7 +14,7 @@ export class CompaniesComponent implements OnInit {
   public filteredCompanies: Company[];
   public filters: Array<[string, Filter]>;
 
-  constructor(private companyManager: CompanyManagerService) {
+  constructor(private companyManager: CompanyManagerService, private addCompanyDialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -44,5 +46,11 @@ export class CompaniesComponent implements OnInit {
       const relevantCompanies: Company[] = filteredCompanies.filter(company => !this.filteredCompanies.map(company => company.name).includes(company.name));
       this.filteredCompanies.push(...relevantCompanies);
     }
+  }
+
+  openAddCompanyDialog() {
+    this.addCompanyDialog.open(AddCompanyDialog, {
+      width: '600px'
+    });
   }
 }
