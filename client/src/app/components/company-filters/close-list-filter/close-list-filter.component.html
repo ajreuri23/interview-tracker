@@ -1,3 +1,5 @@
-<mat-checkbox *ngFor="let option of options; let i = index" (change)="setChecked($event.checked, i)">
-  {{option}}
-</mat-checkbox>
+<div class="filters">
+  <mat-checkbox *ngFor="let option of options; let i = index" (change)="setChecked($event.checked, i)">
+    {{option}}
+  </mat-checkbox>
+</div>

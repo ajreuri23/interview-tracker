@@ -113,6 +113,7 @@ export interface CompanyResponse {
 
 export interface Filter {
   type: FilterType;
+  name: string;
 }
 
 export interface CloseListFilter extends Filter {

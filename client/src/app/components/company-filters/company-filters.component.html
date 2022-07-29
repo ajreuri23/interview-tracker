@@ -1,3 +1,4 @@
 <div *ngFor="let filter of filters">
+  <h2>{{filter[1].name}}</h2>
   <app-close-list-filter *ngIf="filter[1].type === 1" [filter]="filter" (newFilter)="onFilter($event)" (onDeleteFilter)="onDeleteFilter($event)"></app-close-list-filter>
 </div>

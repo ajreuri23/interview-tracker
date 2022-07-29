@@ -5,24 +5,24 @@ export enum FilterType {
 }
 
 export class Filter {
-  constructor(private type: FilterType) {
+  constructor(private type: FilterType, private name: string) {
   }
 }
 
 export class RangeFilter extends Filter {
-  constructor(private min: number, private max: number) {
-    super(FilterType.Range);
+  constructor(private min: number, private max: number, name: string) {
+    super(FilterType.Range, name);
   }
 }
 
 export class CloseListFilter extends Filter {
-  constructor(private options: string[]) {
-    super(FilterType.CloseList);
+  constructor(private options: string[], name: string) {
+    super(FilterType.CloseList, name);
   }
 }
 
 export class TermFilter extends Filter {
-  constructor(private searchTerm: string) {
-    super(FilterType.Term);
+  constructor(private searchTerm: string, name: string) {
+    super(FilterType.Term, name);
   }
 }

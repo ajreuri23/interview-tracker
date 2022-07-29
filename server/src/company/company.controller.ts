@@ -36,14 +36,14 @@ export class ComapnyController {
 
   private getCompanyFilters(companies: Company[]): any {
     return {
-      jobType: new CloseListFilter([...new Set(companies.map(company => company.jobType).filter(_ => _))]),
-      companyType: new CloseListFilter([...new Set(companies.map(company => company.companyType).filter(_ => _))]),
-      "workModel.type": new CloseListFilter([...new Set(companies.filter(company => company.workModel?.type).map(company => company.workModel.type).filter(_ => _))]),
-      "location.city": new CloseListFilter([...new Set(companies.filter(company => company.location?.city).map(company => company.location.city).filter(_ => _))]),
-      "status.type": new CloseListFilter([...new Set(companies.filter(company => company.status?.type).map(company => company.status.type).filter(_ => _))]),
-      "status.stage": new CloseListFilter([...new Set(companies.filter(company => company.status?.stage).map(company => company.status.stage).filter(_ => _))]),
-      technologies: new CloseListFilter([...new Set(companies.map(company => company.technologies).flat().filter(_ => _))]),
-      timeToGetInMinutes: new RangeFilter(Math.min(...companies.map(company => company.timeToGetInMinutes)), Math.max(...companies.map(company => company.timeToGetInMinutes)))
+      jobType: new CloseListFilter([...new Set(companies.map(company => company.jobType).filter(_ => _))], 'Job Type'),
+      companyType: new CloseListFilter([...new Set(companies.map(company => company.companyType).filter(_ => _))], 'Company Type'),
+      "workModel.type": new CloseListFilter([...new Set(companies.filter(company => company.workModel?.type).map(company => company.workModel.type).filter(_ => _))], 'Work Model'),
+      "location.city": new CloseListFilter([...new Set(companies.filter(company => company.location?.city).map(company => company.location.city).filter(_ => _))], 'City'),
+      "status.type": new CloseListFilter([...new Set(companies.filter(company => company.status?.type).map(company => company.status.type).filter(_ => _))], 'Status Type'),
+      "status.stage": new CloseListFilter([...new Set(companies.filter(company => company.status?.stage).map(company => company.status.stage).filter(_ => _))], 'Status Stage'),
+      technologies: new CloseListFilter([...new Set(companies.map(company => company.technologies).flat().filter(_ => _))], 'Technologies'),
+      timeToGetInMinutes: new RangeFilter(Math.min(...companies.map(company => company.timeToGetInMinutes)), Math.max(...companies.map(company => company.timeToGetInMinutes)), 'Time to get')
     }
   }
 }
