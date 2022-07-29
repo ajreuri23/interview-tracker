@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Company} from "../../interfaces";
+import {Company, CompanyConstructor, RawCompanyData} from "../../interfaces";
 import {CompanyManagerService} from "../../services/company-manager/company-manager.service";
 import {City, CompanyType, JobType, StatusStage, StatusTiming, StatusType, WorkModelType} from "../../enums";
 import {MatSelectChange} from "@angular/material/select";
@@ -11,7 +11,7 @@ import {MatSelectChange} from "@angular/material/select";
   styleUrls: ['./add-company-dialog.component.scss']
 })
 export class AddCompanyDialog implements OnInit {
-  public company: Company;
+  public company: RawCompanyData;
   public workModels = Object.entries(WorkModelType);;
   public statusTimings = Object.entries(StatusTiming);
   public statusStages = Object.entries(StatusStage);
@@ -20,51 +20,36 @@ export class AddCompanyDialog implements OnInit {
   public companyTypes = Object.entries(CompanyType);
   public jobTypes = Object.entries(JobType);
 
-  public jobType: JobType;
-  public companyType: CompanyType;
-  public city: City | undefined;
-  public statusType: StatusType | undefined;
-  public workModel: WorkModelType | undefined;
-  public statusTiming: StatusTiming | undefined;
-  public statusStage: StatusStage | undefined;
-
   constructor(public dialogRef: MatDialogRef<AddCompanyDialog>, @Inject(MAT_DIALOG_DATA) public data: Company,
               private companyManager: CompanyManagerService) { }
 
   ngOnInit(): void {
-    this.company = this.data;
-    this.jobType = this.company.jobType;
-    this.companyType = this.company.companyType;
-    this.statusStage = this.company.status?.stage;
-    this.statusTiming = this.company.status?.timing;
-    this.statusType = this.company.status?.type;
-    this.workModel = this.company.workModel?.type;
-    this.city = this.company.location?.city;
+    this.company = {
+      address: this.data?.location?.address ?? undefined,
+      amountOfDaysOnSite: this.data?.workModel?.amountOfDaysOnSite ?? undefined,
+      city: this.data?.location?.city ?? undefined,
+      companyType: this.data?.companyType ?? undefined,
+      description: this.data?.description ?? undefined,
+      jobType: this.data?.jobType ?? undefined,
+      latitude: this.data?.location?.latitude ?? undefined,
+      longitude: this.data?.location?.longitude ?? undefined,
+      statusDate: this.data?.status?.date ?? undefined,
+      statusStage: this.data?.status?.stage ?? undefined,
+      statusTiming: this.data?.status?.timing ?? undefined,
+      statusType: this.data?.status?.type ?? undefined,
+      technologies: this.data?.technologies ?? undefined,
+      timeToGetInMinutes: this.data?.timeToGetInMinutes ?? undefined,
+      workModelType: this.data?.workModel?.type ?? undefined,
+      workerAmount: this.data?.workerAmount ?? undefined,
+      name: this.data?.name ?? undefined
+    }
   }
 
   async addCompany() {
     try {
-      this.company.status = {
-        type: this.statusType,
-        date: this.company.status?.date,
-        stage: this.statusStage,
-        timing: this.statusTiming
-      };
-      this.company.location = {
-        city: this.city,
-        longitude: this.company.location?.longitude,
-        latitude: this.company.location?.latitude,
-        address: this.company.location?.address
-      };
-      this.company.workModel = {
-        type: this.workModel,
-        amountOfDaysOnSite: this.company.workModel?.amountOfDaysOnSite
-      }
-      this.company.jobType = this.jobType;
-      this.company.companyType = this.companyType;
+      const company: Company = CompanyConstructor.getCompany(this.company);
 
-
-      await this.companyManager.addOrUpdateCompany(this.company);
+      await this.companyManager.addOrUpdateCompany(company);
       this.dialogRef.close(this.company);
     } catch (e) {
       this.dialogRef.close(null);

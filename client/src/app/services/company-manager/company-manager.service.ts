@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Company, CompanyResponse } from 'src/app/interfaces';
+import {Company, CompanyResponse} from 'src/app/interfaces';
 import { HttpHandlerService } from '../http-handler/http-handler.service';
 
 @Injectable({

@@ -4,11 +4,11 @@ import { ApiProperty } from "@nestjs/swagger";
 @Schema()
 export class Funding {
     @ApiProperty()
-    @Prop({ required: true})
+    @Prop({ required: false})
     fundingWave: number;
 
     @ApiProperty()
-    @Prop({ required: true })
+    @Prop({ required: false })
     amountFundedInUsd: number;
 }
 

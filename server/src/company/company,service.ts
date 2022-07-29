@@ -17,7 +17,7 @@ export class CompanyService {
     async create(companyDto: Company): Promise<Company> {
         let foundCompany = await this.companyModel.find({name: companyDto.name}).exec();
 
-        if (foundCompany) {
+        if (foundCompany && foundCompany.length) {
             const updatedCompany = await this.companyModel.findOneAndUpdate({ name: companyDto.name }, companyDto).exec();
             return updatedCompany;
         } else {

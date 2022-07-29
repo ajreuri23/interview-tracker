@@ -4,15 +4,15 @@ import { ApiProperty } from "@nestjs/swagger";
 @Schema()
 export class Contract {
     @ApiProperty()
-    @Prop({ required: true })
+    @Prop({ required: false })
     moneyBruto: number;
 
     @ApiProperty()
-    @Prop({ required: true })
+    @Prop({ required: false })
     vacationDays: number;
 
     @ApiProperty()
-    @Prop({ required: true })
+    @Prop({ required: false })
     moneyNeto: number;
 }
 
