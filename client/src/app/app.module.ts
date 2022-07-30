@@ -9,12 +9,13 @@ import { CloseListFilterComponent } from './components/company-filters/close-lis
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatButtonModule} from "@angular/material/button";
 import {AddCompanyDialog} from "./components/add-company/add-company-dialog.component";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDialogModule} from "@angular/material/dialog";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatIconModule} from "@angular/material/icon";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import {MatIconModule} from "@angular/material/icon";
     MatSelectModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

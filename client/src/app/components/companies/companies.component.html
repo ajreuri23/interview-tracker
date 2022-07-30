@@ -1,5 +1,15 @@
 <div class="companies" *ngIf="companies && filters">
-    <button mat-button mat-raised-button class="mat-primary" (click)="openAddCompanyDialog()">Add Company</button>
-    <app-company-filters [filters]="filters" (onNewFilter)="onNewFilter($event)"></app-company-filters>
-    <app-company-list [companies]="filteredCompanies"></app-company-list>
+    <div class="title">
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Number"
+             matInput
+             [ngModel]="searchCompanyName"
+             (ngModelChange)="filterCompaniesByName($event)">
+      <button mat-button mat-raised-button class="mat-primary" (click)="openAddCompanyDialog()">Add Company</button>
+    </div>
+    <div class="content">
+      <app-company-filters [filters]="filters" (onNewFilter)="onNewFilter($event)"></app-company-filters>
+      <app-company-list [companies]="filteredSearchCompanies"></app-company-list>
+    </div>
 </div>

@@ -1,5 +1,17 @@
 .companies {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    app-company-list {
+      width: 100%;
+    }
+  }
 }
